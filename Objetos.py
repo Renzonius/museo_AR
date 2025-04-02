@@ -1,5 +1,14 @@
-import qrcode  # type: ignore # Importa la librería para generar códigos QR
+import qrcode  
 
-url = "https://renzonius.github.io/museo_AR/"  # Enlace al modelo 3D
-qr = qrcode.make(url)  # Crea el código QR con la URL
-qr.save("modelo3d_qr.png")  # Guarda la imagen del código QR
+# Lista de modelos con sus URLs
+modelos = {
+    "ObjetoCubo": "https://renzonius.github.io/museo_AR/cubo.html",
+    "ObjetoEsfera": "https://renzonius.github.io/museo_AR/esfera.html",
+    "ObjetoCono": "https://renzonius.github.io/museo_AR/cono.html"
+}
+
+# Generar QR para cada objeto
+for nombre, url in modelos.items():
+    qr = qrcode.make(url)  
+    qr.save(f"{nombre}_qr.png")  
+    print(f"QR generado para {nombre}: {url}")
