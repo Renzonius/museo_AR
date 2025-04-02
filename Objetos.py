@@ -5,7 +5,8 @@ modelos = {
     "ObjetoCubo": "https://renzonius.github.io/museo_AR/cubo.html",
     "ObjetoEsfera": "https://renzonius.github.io/museo_AR/esfera.html",
     "ObjetoCono": "https://renzonius.github.io/museo_AR/cono.html",
-    "ObjetoHabitacion": "https://renzonius.github.io/museo_AR/habitacion.html"
+    "ObjetoHabitacion": "https://renzonius.github.io/museo_AR/habitacion.html",
+    "ObjetoConsultorio": "https://renzonius.github.io/museo_AR/consultorio.html"
 }
 
 # Generar QR para cada objeto

@@ -3,17 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cono</title>
+    <title>Consultorio AR</title>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        #toggleButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 20px;
+            border-radius: 5px;
+        }
+        #toggleButton:hover {
+            background: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <model-viewer src="Modelos/Consultorio.glb" 
+
+    <h1>Consultorio AR</h1>
+    
+    <button id="toggleButton">Ocultar Paredes</button>
+
+    <!-- Modelo con paredes -->
+    <model-viewer id="modeloConParedes"
+                  src="Modelos/Consultorio.glb" 
                   ar ar-modes="webxr scene-viewer quick-look" 
                   camera-controls 
                   auto-rotate
                   camera-target="0m 1m 0m" 
                   field-of-view="30deg"
-                  style="width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center;">
+                  style="width: 100vw; height: 80vh; display: block;">
     </model-viewer>
+
+    <!-- Modelo sin paredes (inicialmente oculto) -->
+    <model-viewer id="modeloSinParedes"
+                  src="Modelos/Consultorio_sin_muros.glb" 
+                  ar ar-modes="webxr scene-viewer quick-look" 
+                  camera-controls 
+                  auto-rotate
+                  camera-target="0m 1m 0m" 
+                  field-of-view="30deg"
+                  style="width: 100vw; height: 80vh; display: none;">
+    </model-viewer>
+
+    <script>
+        const boton = document.getElementById("toggleButton");
+        const modeloConParedes = document.getElementById("modeloConParedes");
+        const modeloSinParedes = document.getElementById("modeloSinParedes");
+
+        boton.addEventListener("click", () => {
+            if (modeloConParedes.style.display === "block") {
+                modeloConParedes.style.display = "none";
+                modeloSinParedes.style.display = "block";
+                boton.textContent = "Mostrar Paredes";
+            } else {
+                modeloConParedes.style.display = "block";
+                modeloSinParedes.style.display = "none";
+                boton.textContent = "Ocultar Paredes";
+            }
+        });
+    </script>
+
 </body>
 </html>
